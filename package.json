@@ -1,17 +1,22 @@
 {
-  "name": "api-segura",
+  "name": "trabalho-final-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "API segura com Node.js, Express, JWT e testes automatizados com Mocha, Chai e Supertest.",
+  "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "mocha"
-   },
-  "keywords": [],
+  },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "body-parser": "^2.2.0",
-    "express": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.4.1",
+    "mocha": "^10.4.0",
+    "supertest": "^7.0.0"
   }
 }
