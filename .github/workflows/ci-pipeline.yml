@@ -1,0 +1,37 @@
+
+name: CI Pipeline - Testes da API
+
+# Define os gatilhos que vão iniciar a pipeline
+on:
+  # Roda quando houver um push para a branch 'main'
+  push:
+    branches: [ main ]
+  # Roda também quando um Pull Request for aberto para a branch 'main'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  
+  build-and-test:
+    # Define o tipo de máquina virtual que o job vai usar. 'ubuntu-latest' é a padrão.
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1º Passo: Baixa o código do seu repositório para a máquina virtual
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2º Passo: Configura o ambiente Node.js na versão que queremos
+      - name: Configurar Node.js v20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          
+          cache: 'npm'
+
+      # 3º Passo: Instala as dependências do projeto de forma rápida e segura
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar os testes
+        run: npm test
