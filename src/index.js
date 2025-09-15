@@ -23,5 +23,11 @@ app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
 
-// Exportamos o 'app' para que nossos testes possam usá-lo
+if (require.main === module) {
+  // Só inicia o servidor se o arquivo for executado diretamente
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
+}
+
 module.exports = app;
